@@ -1,6 +1,7 @@
 package com.kayir.pages;
 
 import com.kayir.base.BasePage;
+import com.kayir.pages.signup_login.DeletedAccountPage;
 import com.kayir.pages.signup_login.LoginPage;
 import org.openqa.selenium.By;
 
@@ -8,6 +9,8 @@ public class HomePage extends BasePage {
 
     private By signUpLoginItem = By.cssSelector("ul > li:nth-child(4)");
     private By homePageLogo = By.xpath("//*[@id=\"header\"]/div/div/div/div[1]/div/a/img");
+    private By loggedInfoText = By.xpath("//*[contains(text(),'Logged')]");
+    private By deleteAccountLink = By.linkText("Delete Account");
 
     public LoginPage goToSignUpLogin(){
         click(signUpLoginItem);
@@ -18,6 +21,14 @@ public class HomePage extends BasePage {
         return find(homePageLogo).isDisplayed();
     }
 
+    public boolean isLoggedInfoTextVisible(){
+        return find(loggedInfoText).isDisplayed();
+    }
+
+    public DeletedAccountPage clickDeleteAccount(){
+        click(deleteAccountLink);
+        return new DeletedAccountPage();
+    }
 
 
 }

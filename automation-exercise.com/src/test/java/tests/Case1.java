@@ -9,11 +9,39 @@ public class Case1 extends BaseTest {
 
     @Test
     public void testRegisterUser(){
-        var signUpLoginPage = homePage.goToSignUpLogin();
-        Assert.assertTrue(signUpLoginPage.isNewUserSignTextVisible());
+        Assert.assertTrue(homePage.isHomePageLogoVisible(),
+                "\n Home Page Logo Is Not Visible \n");
 
+        var loginPage = homePage.goToSignUpLogin();
+        Assert.assertTrue(loginPage.isNewUserSignTextVisible(),
+                "\n New User Text Is Not Visible \n");
+        loginPage.setUserName("Alice2");
+        loginPage.setEmail("aliceinwonderland2@gmail.com");
 
+        var signUpPage = loginPage.clickSubmitButton();
+        Assert.assertTrue(signUpPage.isEnterAccountInfoTextVisible());
+        signUpPage.clickMrsRadioButton();
+        signUpPage.setName("Alice Neverland");
+        signUpPage.setPassword("123456");
+        signUpPage.setDay("14");
+        signUpPage.setMonth("November");
+        signUpPage.setYear("1991");
+        signUpPage.clickNewsletterCheckbox();
+        signUpPage.clickOfferCheckbox();
+        signUpPage.setFirstName("Alice");
+        signUpPage.setSurname("Neverland");
+        signUpPage.setCompany("Wonderland Corp.");
+        signUpPage.setAddress("Nowhere Avenue","Suite 3200");
+        signUpPage.setCountry("Canada","Quebec","Montreal","6601");
+        signUpPage.setMobileNo("+123457651221");
 
+        var accountCreatedPage = signUpPage.clickCreateAccountButton();
+        Assert.assertTrue(accountCreatedPage.isAccountCreatedTextVisible());
+        accountCreatedPage.clickContinueButton();
+        Assert.assertTrue(homePage.isLoggedInfoTextVisible());
+
+        var deletedAccountPage = homePage.clickDeleteAccount();
+        Assert.assertTrue(deletedAccountPage.isAccountDeletedTextVisible());
     }
 
 
