@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import static utilities.ActionsUtility.sendKeys;
 import static utilities.JavaScriptUtility.clickJS;
 import static utilities.JavaScriptUtility.scrollToElementJS;
+import static utilities.WaitUtility.explicitWaitUntilVisible;
 
 public class SignUpPage extends LoginPage {
 
@@ -24,6 +25,7 @@ public class SignUpPage extends LoginPage {
     }
 
     public boolean isEnterAccountInfoTextVisible() {
+        explicitWaitUntilVisible(3,enterAccountInfoText);
         return find(enterAccountInfoText).isDisplayed();
     }
 

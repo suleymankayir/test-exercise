@@ -4,11 +4,14 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static utilities.WaitUtility.*;
+
 public class Case1 extends BaseTest {
 
 
     @Test
     public void testRegisterUser(){
+
         Assert.assertTrue(homePage.isHomePageLogoVisible(),
                 "\n Home Page Logo Is Not Visible \n");
 

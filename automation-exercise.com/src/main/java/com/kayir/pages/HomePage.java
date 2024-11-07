@@ -5,6 +5,9 @@ import com.kayir.pages.signup_login.DeletedAccountPage;
 import com.kayir.pages.signup_login.LoginPage;
 import org.openqa.selenium.By;
 
+import static utilities.WaitUtility.*;
+
+
 public class HomePage extends BasePage {
 
     private By signUpLoginItem = By.cssSelector("ul > li:nth-child(4)");
@@ -18,10 +21,12 @@ public class HomePage extends BasePage {
     }
 
     public boolean isHomePageLogoVisible(){
+        explicitWaitUntilVisible(3,homePageLogo);
         return find(homePageLogo).isDisplayed();
     }
 
     public boolean isLoggedInfoTextVisible(){
+        fluentWaitUntilVisible(2,homePageLogo);
         return find(loggedInfoText).isDisplayed();
     }
 
