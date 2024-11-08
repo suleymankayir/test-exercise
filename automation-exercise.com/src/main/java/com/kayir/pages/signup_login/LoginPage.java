@@ -15,7 +15,7 @@ public class LoginPage extends HomePage {
     private By signUpButton = By.xpath("//button[@data-qa='signup-button']");
     private By loginEmailField = By.xpath("//input[@data-qa='login-email']");
     private By loginButton = By.xpath("//button[@data-qa='login-button']");
-
+    private By incorrectInfoText = By.xpath("//p[contains(text(),'incorrect')]");
 
 
     public SignUpPage clickSubmitButton(){
@@ -27,6 +27,10 @@ public class LoginPage extends HomePage {
     public HomePage clickLoginButton(){
         click(loginButton);
         return new HomePage();
+    }
+
+    public boolean isIncorrectInfoTextVisible(){
+        return find(incorrectInfoText).isDisplayed();
     }
 
     public boolean isLoginAccountTextVisible(){
