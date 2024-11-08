@@ -9,15 +9,19 @@ public class Case2 extends BaseTest {
     @Test
     public void testLogin(){
 
-        Assert.assertTrue(homePage.isHomePageLogoVisible());
+        Assert.assertTrue(homePage.isHomePageLogoVisible(),
+                "\n Home Page Is Not Visible \n");
         var loginPage = homePage.goToSignUpLogin();
-        Assert.assertTrue(loginPage.isLoginAccountTextVisible());
+        Assert.assertTrue(loginPage.isLoginAccountTextVisible(),
+                "\n Login To Your Account Text Is Not Visible \n");
         loginPage.setLoginEmail("aliceneverland@hotmail.com");
         loginPage.setPassword("123456");
         var homePage = loginPage.clickLoginButton();
-        Assert.assertTrue(homePage.isLoggedInfoTextVisible());
+        Assert.assertTrue(homePage.isLoggedInfoTextVisible(),
+                "\n Logged Info Is Not Exist \n");
         var deletedAccountPage = homePage.clickDeleteAccount();
-        Assert.assertTrue(deletedAccountPage.isAccountDeletedTextVisible());
+        Assert.assertTrue(deletedAccountPage.isAccountDeletedTextVisible(),
+                "\n Account Deleted Text Is Not Visible \n");
 
     }
 
