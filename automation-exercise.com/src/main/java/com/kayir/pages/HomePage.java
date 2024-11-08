@@ -2,12 +2,14 @@ package com.kayir.pages;
 
 import com.kayir.base.BasePage;
 import com.kayir.pages.contact_us.ContactUsPage;
+import com.kayir.pages.products.ProductsPage;
 import com.kayir.pages.signup_login.DeletedAccountPage;
 import com.kayir.pages.signup_login.LoginPage;
 import com.kayir.pages.test_cases.TestCasesPage;
 import org.openqa.selenium.By;
 
-import static utilities.WaitUtility.*;
+import static utilities.WaitUtility.explicitWaitUntilVisible;
+import static utilities.WaitUtility.fluentWaitUntilVisible;
 
 
 public class HomePage extends BasePage {
@@ -19,39 +21,45 @@ public class HomePage extends BasePage {
     private By deleteAccountLink = By.linkText("Delete Account");
     private By logoutLink = By.linkText("Logout");
     private By testCasesLink = By.cssSelector("ul > li:nth-child(5)");
+    private By productsLink = By.cssSelector("ul > li:nth-child(2)");
 
 
-    public LoginPage goToSignUpLogin(){
+    public LoginPage goToSignUpLogin() {
         click(signUpLoginLink);
         return new LoginPage();
     }
 
-    public TestCasesPage goToTestCases(){
+    public ProductsPage goToProducts(){
+        click(productsLink);
+        return new ProductsPage();
+    }
+
+    public TestCasesPage goToTestCases() {
         click(testCasesLink);
         return new TestCasesPage();
     }
 
-    public ContactUsPage goToContactUs(){
+    public ContactUsPage goToContactUs() {
         click(contactUsLink);
         return new ContactUsPage();
     }
 
-    public boolean isHomePageLogoVisible(){
-        explicitWaitUntilVisible(3,homePageLogo);
+    public boolean isHomePageLogoVisible() {
+        explicitWaitUntilVisible(3, homePageLogo);
         return find(homePageLogo).isDisplayed();
     }
 
-    public boolean isLoggedInfoTextVisible(){
-        fluentWaitUntilVisible(2,homePageLogo);
+    public boolean isLoggedInfoTextVisible() {
+        fluentWaitUntilVisible(2, homePageLogo);
         return find(loggedInfoText).isDisplayed();
     }
 
-    public DeletedAccountPage clickDeleteAccount(){
+    public DeletedAccountPage clickDeleteAccount() {
         click(deleteAccountLink);
         return new DeletedAccountPage();
     }
 
-    public LoginPage clickLogout(){
+    public LoginPage clickLogout() {
         click(logoutLink);
         return new LoginPage();
     }
