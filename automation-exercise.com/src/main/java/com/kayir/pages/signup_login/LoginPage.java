@@ -10,8 +10,11 @@ import static utilities.JavaScriptUtility.scrollToElementJS;
 public class LoginPage extends HomePage {
 
     private By newUserText = By.xpath("//h2[text()='New User Signup!']");
+    private By loginAccountText = By.xpath("//h2[contains(text(),'Login')]");
     private By signUpName = By.xpath("//input[@data-qa='signup-name']");
     private By signUpButton = By.xpath("//button[@data-qa='signup-button']");
+    private By loginEmailField = By.xpath("//input[@data-qa='login-email']");
+    private By loginButton = By.xpath("//button[@data-qa='login-button']");
 
 
 
@@ -21,6 +24,14 @@ public class LoginPage extends HomePage {
         return new SignUpPage();
     }
 
+    public HomePage clickLoginButton(){
+        click(loginButton);
+        return new HomePage();
+    }
+
+    public boolean isLoginAccountTextVisible(){
+        return find(loginAccountText).isDisplayed();
+    }
 
     public boolean isNewUserSignTextVisible(){
         return find(newUserText).isDisplayed();
@@ -33,6 +44,15 @@ public class LoginPage extends HomePage {
 
     public void setEmail(String email){
         setUserName(Keys.chord(Keys.TAB,email));
+    }
+
+    public void setLoginEmail(String email){
+        scrollToElementJS(loginEmailField);
+        sendKeys(find(loginEmailField),Keys.chord(email));
+    }
+
+    public void setPassword(String password){
+        setLoginEmail(Keys.chord(Keys.TAB,password));
     }
 
 
