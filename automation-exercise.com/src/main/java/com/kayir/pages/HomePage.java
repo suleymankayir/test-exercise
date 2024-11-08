@@ -14,6 +14,7 @@ public class HomePage extends BasePage {
     private By homePageLogo = By.xpath("//*[@id=\"header\"]/div/div/div/div[1]/div/a/img");
     private By loggedInfoText = By.xpath("//*[contains(text(),'Logged')]");
     private By deleteAccountLink = By.linkText("Delete Account");
+    private By logoutLink = By.linkText("Logout");
 
     public LoginPage goToSignUpLogin(){
         click(signUpLoginItem);
@@ -33,6 +34,11 @@ public class HomePage extends BasePage {
     public DeletedAccountPage clickDeleteAccount(){
         click(deleteAccountLink);
         return new DeletedAccountPage();
+    }
+
+    public LoginPage clickLogout(){
+        click(logoutLink);
+        return new LoginPage();
     }
 
 
