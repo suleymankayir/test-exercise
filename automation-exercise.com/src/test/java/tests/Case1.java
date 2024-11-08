@@ -4,8 +4,6 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static utilities.WaitUtility.*;
-
 public class Case1 extends BaseTest {
 
 
@@ -21,7 +19,7 @@ public class Case1 extends BaseTest {
         loginPage.setUserName("Alice2");
         loginPage.setEmail("aliceinwonderland2@gmail.com");
 
-        var signUpPage = loginPage.clickSubmitButton();
+        var signUpPage = loginPage.clickSignUpButton();
         Assert.assertTrue(signUpPage.isEnterAccountInfoTextVisible());
         signUpPage.clickMrsRadioButton();
         signUpPage.setName("Alice Neverland");

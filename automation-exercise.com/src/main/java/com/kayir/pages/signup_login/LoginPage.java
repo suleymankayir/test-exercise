@@ -16,9 +16,11 @@ public class LoginPage extends HomePage {
     private By loginEmailField = By.xpath("//input[@data-qa='login-email']");
     private By loginButton = By.xpath("//button[@data-qa='login-button']");
     private By incorrectInfoText = By.xpath("//p[contains(text(),'incorrect')]");
+    private By existAccountText = By.xpath("//p[contains(text(),'exist')]");
 
 
-    public SignUpPage clickSubmitButton(){
+
+    public SignUpPage clickSignUpButton(){
         scrollToElementJS(signUpButton);
         click(signUpButton);
         return new SignUpPage();
@@ -31,6 +33,10 @@ public class LoginPage extends HomePage {
 
     public boolean isIncorrectInfoTextVisible(){
         return find(incorrectInfoText).isDisplayed();
+    }
+
+    public boolean isAccountExistTextVisible(){
+        return find(existAccountText).isDisplayed();
     }
 
     public boolean isLoginAccountTextVisible(){

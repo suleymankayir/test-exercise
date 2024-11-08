@@ -15,5 +15,8 @@ public class ActionsUtility extends Utility{
 
     public static void sendKeys(CharSequence keys){
         act().sendKeys(keys).perform();
+
     }
+
+
 }
