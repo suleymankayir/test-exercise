@@ -1,6 +1,7 @@
 package com.kayir.pages;
 
 import com.kayir.base.BasePage;
+import com.kayir.pages.cart.CartPage;
 import com.kayir.pages.contact_us.ContactUsPage;
 import com.kayir.pages.products.ProductsPage;
 import com.kayir.pages.signup_login.DeletedAccountPage;
@@ -16,19 +17,23 @@ import static utilities.WaitUtility.fluentWaitUntilVisible;
 
 
 public class HomePage extends BasePage {
-
+    //Links
     private By signUpLoginLink = By.cssSelector("ul > li:nth-child(4)");
     private By contactUsLink = By.cssSelector("ul > li:nth-child(8)");
+    private By productsLink = By.cssSelector("ul > li:nth-child(2)");
+    private By testCasesLink = By.cssSelector("ul > li:nth-child(5)");
+    private By logoutLink = By.linkText("Logout");
+    private By cartLink = By.cssSelector("ul > li:nth-child(3)");
+
     private By homePageLogo = By.xpath("//*[@id=\"header\"]/div/div/div/div[1]/div/a/img");
     private By loggedInfoText = By.xpath("//*[contains(text(),'Logged')]");
     private By deleteAccountLink = By.linkText("Delete Account");
-    private By logoutLink = By.linkText("Logout");
-    private By testCasesLink = By.cssSelector("ul > li:nth-child(5)");
-    private By productsLink = By.cssSelector("ul > li:nth-child(2)");
     private By subscribeText = By.xpath("//footer[@id='footer']//h2[text()='Subscription']");
     private By subEmailField = By.id("susbscribe_email");
     private By subArrowButton = By.xpath("//button[@type='submit']");
     private By successSubText = By.id("success-subscribe");
+
+
     public LoginPage goToSignUpLogin() {
         click(signUpLoginLink);
         return new LoginPage();
@@ -42,6 +47,11 @@ public class HomePage extends BasePage {
     public TestCasesPage goToTestCases() {
         click(testCasesLink);
         return new TestCasesPage();
+    }
+
+    public CartPage goToCart(){
+        click(cartLink);
+        return new CartPage();
     }
 
     public ContactUsPage goToContactUs() {
