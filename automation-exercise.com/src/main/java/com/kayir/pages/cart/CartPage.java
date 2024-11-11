@@ -13,7 +13,32 @@ public class CartPage extends HomePage {
     private By subEmailField = By.id("susbscribe_email");
     private By subArrowButton = By.xpath("//button[@type='submit']");
     private By successSubText = By.id("success-subscribe");
+    private By firstProduct = By.id("product-1");
+    private By secondProduct = By.id("product-2");
+    private By price = By.xpath("//tr[@id='product-1']//td[@class='cart_price']");
+    private By quantity = By.xpath("//tr[@id='product-1']//td[@class='cart_quantity']");
+    private By totalPrice = By.xpath("//tr[@id='product-1']//td[@class='cart_total']");
 
+
+    public String getPrice(){
+        return getText(price);
+    }
+
+    public String getQuantity(){
+        return getText(quantity);
+    }
+
+    public String getTotalPrice(){
+        return getText(totalPrice);
+    }
+
+    public boolean isFirstProductVisible(){
+        return find(firstProduct).isDisplayed();
+    }
+
+    public boolean isSecondProductVisible(){
+        return find(secondProduct).isDisplayed();
+    }
 
     public String verifySubscriptionText(){
         scrollToElementJS(subscribeText);
