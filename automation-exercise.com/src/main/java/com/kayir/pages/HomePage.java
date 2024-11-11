@@ -4,6 +4,7 @@ import com.kayir.base.BasePage;
 import com.kayir.pages.cart.CartPage;
 import com.kayir.pages.contact_us.ContactUsPage;
 import com.kayir.pages.products.ProductsPage;
+import com.kayir.pages.products.SingleProductPage;
 import com.kayir.pages.signup_login.DeletedAccountPage;
 import com.kayir.pages.signup_login.LoginPage;
 import com.kayir.pages.test_cases.TestCasesPage;
@@ -32,11 +33,17 @@ public class HomePage extends BasePage {
     private By subEmailField = By.id("susbscribe_email");
     private By subArrowButton = By.xpath("//button[@type='submit']");
     private By successSubText = By.id("success-subscribe");
-
+    private By firstProductView = By.xpath("//a[@href='/product_details/1']");
 
     public LoginPage goToSignUpLogin() {
         click(signUpLoginLink);
         return new LoginPage();
+    }
+
+    public SingleProductPage viewToProduct(){
+        scrollToElementJS(firstProductView);
+        click(firstProductView);
+        return new SingleProductPage();
     }
 
     public ProductsPage goToProducts(){
