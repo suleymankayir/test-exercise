@@ -34,6 +34,11 @@ public class HomePage extends BasePage {
     private By subArrowButton = By.xpath("//button[@type='submit']");
     private By successSubText = By.id("success-subscribe");
     private By firstProductView = By.xpath("//a[@href='/product_details/1']");
+    private By addToFirstProduct = By.xpath("//div[@class='features_items']//a[@data-product-id='1']");
+    private By continueShopButton = By.xpath("//button[@data-dismiss='modal']");
+    private By addToSecondProduct = By.xpath("//div[@class='features_items']//a[@data-product-id='2']");
+
+
 
     public LoginPage goToSignUpLogin() {
         click(signUpLoginLink);
@@ -64,6 +69,21 @@ public class HomePage extends BasePage {
     public ContactUsPage goToContactUs() {
         click(contactUsLink);
         return new ContactUsPage();
+    }
+
+    public void clickAddToFirstProduct(){
+        scrollToElementJS(addToFirstProduct);
+        click(addToFirstProduct);
+    }
+
+    public void clickAddToSecondProduct(){
+        scrollToElementJS(addToSecondProduct);
+        click(addToSecondProduct);
+    }
+
+    public void clickContinueShoppingButton(){
+        explicitWaitUntilVisible(1,continueShopButton);
+        click(continueShopButton);
     }
 
     public String verifySubscriptionText(){

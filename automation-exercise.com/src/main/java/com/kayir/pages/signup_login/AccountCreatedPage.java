@@ -5,15 +5,16 @@ import org.openqa.selenium.By;
 
 import static utilities.JavaScriptUtility.scrollToElementJS;
 import static utilities.WaitUtility.explicitWaitUntilVisible;
+import static utilities.WaitUtility.fluentWaitUntilVisible;
 
 public class AccountCreatedPage extends SignUpPage{
 
-    private By accountCreatedText = By.xpath("//b[text()='Account Created!']");
+    private By accountCreatedText = By.xpath("//h2[@data-qa='account-created']");
     private By continueButton = By.linkText("Continue");
 
 
     public boolean isAccountCreatedTextVisible(){
-        explicitWaitUntilVisible(3,accountCreatedText);
+
         return find(accountCreatedText).isDisplayed();
     }
 

@@ -16,8 +16,8 @@ public class Case1 extends BaseTest {
         var loginPage = homePage.goToSignUpLogin();
         Assert.assertTrue(loginPage.isNewUserSignTextVisible(),
                 "\n New User Text Is Not Visible \n");
-        loginPage.setUserName("Alice2");
-        loginPage.setEmail("aliceinwonderland2@gmail.com");
+        loginPage.setUserName("Alice3");
+        loginPage.setEmail("aliceinwonderland3@gmail.com");
 
         var signUpPage = loginPage.clickSignUpButton();
         Assert.assertTrue(signUpPage.isEnterAccountInfoTextVisible());

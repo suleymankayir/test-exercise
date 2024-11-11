@@ -1,11 +1,13 @@
 package com.kayir.pages.cart;
 
 import com.kayir.pages.HomePage;
+import com.kayir.pages.signup_login.LoginPage;
 import org.openqa.selenium.By;
 
 import static utilities.ActionsUtility.sendKeys;
 import static utilities.GetUtility.getText;
 import static utilities.JavaScriptUtility.scrollToElementJS;
+import static utilities.WaitUtility.explicitWaitUntilVisible;
 
 public class CartPage extends HomePage {
 
@@ -18,7 +20,23 @@ public class CartPage extends HomePage {
     private By price = By.xpath("//tr[@id='product-1']//td[@class='cart_price']");
     private By quantity = By.xpath("//tr[@id='product-1']//td[@class='cart_quantity']");
     private By totalPrice = By.xpath("//tr[@id='product-1']//td[@class='cart_total']");
+    private By proceedToCheckoutButton = By.xpath("//a[text()='Proceed To Checkout']");
+    private By registerLoginLink = By.xpath("//u[text()='Register / Login']");
 
+    public LoginPage clickRegisterLogin(){
+        explicitWaitUntilVisible(1,registerLoginLink);
+        click(registerLoginLink);
+        return new LoginPage();
+    }
+
+    public void clickProceedToCheckout(){
+        click(proceedToCheckoutButton);
+    }
+
+    public CheckoutPage clickProceedToCheckoutLogged(){
+        click(proceedToCheckoutButton);
+        return new CheckoutPage();
+    }
 
     public String getPrice(){
         return getText(price);
