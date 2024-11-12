@@ -24,7 +24,7 @@ public class PaymentPage extends CheckoutPage {
 
     public boolean isSuccessMessageDisplayed() {
         back();
-        explicitWaitUntilVisible(1,successMessage);
+
         boolean value = find(successMessage).isDisplayed();
         forward();
         return value;
