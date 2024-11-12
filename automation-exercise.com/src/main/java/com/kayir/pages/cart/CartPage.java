@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 
 import static utilities.ActionsUtility.sendKeys;
 import static utilities.GetUtility.getText;
+import static utilities.JavaScriptUtility.clickJS;
 import static utilities.JavaScriptUtility.scrollToElementJS;
 import static utilities.WaitUtility.explicitWaitUntilVisible;
 
@@ -22,6 +23,18 @@ public class CartPage extends HomePage {
     private By totalPrice = By.xpath("//tr[@id='product-1']//td[@class='cart_total']");
     private By proceedToCheckoutButton = By.xpath("//a[text()='Proceed To Checkout']");
     private By registerLoginLink = By.xpath("//u[text()='Register / Login']");
+    private By deleteFirstProduct = By.xpath("//a[@data-product-id='1']");
+    private By firstProductDesc = By.xpath("//*[@id=\"product-1\"]/td[2]/h4/a");
+
+    public void clickDeleteFirstProduct(){
+        scrollToElementJS(deleteFirstProduct);
+        click(deleteFirstProduct);
+    }
+
+    public String getFirstProductDesc(){
+        return getText(firstProductDesc);
+    }
+
 
     public LoginPage clickRegisterLogin(){
         explicitWaitUntilVisible(1,registerLoginLink);
