@@ -3,6 +3,7 @@ package com.kayir.pages;
 import com.kayir.base.BasePage;
 import com.kayir.pages.cart.CartPage;
 import com.kayir.pages.contact_us.ContactUsPage;
+import com.kayir.pages.products.CategoryProductsPage;
 import com.kayir.pages.products.ProductsPage;
 import com.kayir.pages.products.SingleProductPage;
 import com.kayir.pages.signup_login.DeletedAccountPage;
@@ -37,8 +38,9 @@ public class HomePage extends BasePage {
     private By addToFirstProduct = By.xpath("//div[@class='features_items']//a[@data-product-id='1']");
     private By continueShopButton = By.xpath("//button[@data-dismiss='modal']");
     private By addToSecondProduct = By.xpath("//div[@class='features_items']//a[@data-product-id='2']");
-
-
+    private By categoryText = By.xpath("//h2[text()='Category']");
+    private By womenCategory = By.xpath("//a[@href='#Women']");
+    private By dressCategoty = By.xpath("//div[@id='Women']//a[text()='Dress ']");
 
     public LoginPage goToSignUpLogin() {
         click(signUpLoginLink);
@@ -69,6 +71,21 @@ public class HomePage extends BasePage {
     public ContactUsPage goToContactUs() {
         click(contactUsLink);
         return new ContactUsPage();
+    }
+
+    public CategoryProductsPage clickDressCategory(){
+        explicitWaitUntilVisible(1,dressCategoty);
+        click(dressCategoty);
+        return new CategoryProductsPage();
+    }
+
+    public void clickWomenCategory(){
+        scrollToElementJS(womenCategory);
+        click(womenCategory);
+    }
+
+    public boolean isCategoryTextVisible(){
+        return find(categoryText).isDisplayed();
     }
 
     public void clickAddToFirstProduct(){
