@@ -41,6 +41,26 @@ public class HomePage extends BasePage {
     private By categoryText = By.xpath("//h2[text()='Category']");
     private By womenCategory = By.xpath("//a[@href='#Women']");
     private By dressCategoty = By.xpath("//div[@id='Women']//a[text()='Dress ']");
+    private By recommendedText = By.xpath("//*[text()='recommended items']");
+    private By recommendedFirstProductAdd = By.xpath("//div[@class='recommended_items']//a[@data-product-id='1']");
+    private By viewCart = By.xpath("//u[text()='View Cart']");
+
+    public CartPage clickViewCart(){
+        explicitWaitUntilVisible(1, viewCart);
+        click(viewCart);
+        return new CartPage();
+    }
+
+    public void clickAddToRecommendedFirst(){
+        fluentWaitUntilVisible(5,recommendedFirstProductAdd);
+        scrollToElementJS(recommendedFirstProductAdd);
+        click(recommendedFirstProductAdd);
+    }
+
+    public boolean isRecommendedTextVisible(){
+        scrollToElementJS(recommendedText);
+        return find(recommendedText).isDisplayed();
+    }
 
     public LoginPage goToSignUpLogin() {
         click(signUpLoginLink);

@@ -36,6 +36,8 @@ public class CartPage extends HomePage {
         click(deleteFirstProduct);
     }
 
+
+
     public LoginPage clickSignupLogin(){
         click(signUpLoginLink);
         return new LoginPage();
