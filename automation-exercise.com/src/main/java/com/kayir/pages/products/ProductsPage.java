@@ -29,12 +29,25 @@ public class ProductsPage extends HomePage {
     private By secondProduct = By.xpath("//div[@class='productinfo text-center']//a[@data-product-id='2']");
     private By secondProductAddToCartField = By.xpath("//html/body/section[2]/div/div/div[2]/div/div[3]/div/div[1]/div[2]/div/a");
     private By viewCart = By.xpath("//u[text()='View Cart']");
+    private By brandsText = By.xpath("//h2[text()='Brands']");
+    private By poloLink = By.xpath("/html/body/section[2]/div[1]/div/div[1]/div/div[2]/div/ul/li[1]/a");
 
 
     public SingleProductPage clickViewProduct() {
         scrollToElementJS(firstProduct);
         clickJS(firstProduct);
         return new SingleProductPage();
+    }
+
+    public BrandsProductsPage clickPolo(){
+        scrollToElementJS(poloLink);
+        click(poloLink);
+        return new BrandsProductsPage();
+    }
+
+    public boolean isBrandsTextVisible(){
+        scrollToElementJS(brandsText);
+        return find(brandsText).isDisplayed();
     }
 
     public void moveToFirstElement() {
