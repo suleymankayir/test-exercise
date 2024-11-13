@@ -3,6 +3,9 @@ package com.kayir.pages.cart;
 import com.kayir.pages.HomePage;
 import com.kayir.pages.signup_login.LoginPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 import static utilities.ActionsUtility.sendKeys;
 import static utilities.GetUtility.getText;
@@ -25,10 +28,28 @@ public class CartPage extends HomePage {
     private By registerLoginLink = By.xpath("//u[text()='Register / Login']");
     private By deleteFirstProduct = By.xpath("//a[@data-product-id='1']");
     private By firstProductDesc = By.xpath("//*[@id=\"product-1\"]/td[2]/h4/a");
+    private By cartProducts = By.className("cart_description");
+    private By signUpLoginLink = By.cssSelector("ul > li:nth-child(4)");
 
     public void clickDeleteFirstProduct(){
         scrollToElementJS(deleteFirstProduct);
         click(deleteFirstProduct);
+    }
+
+    public LoginPage clickSignupLogin(){
+        click(signUpLoginLink);
+        return new LoginPage();
+    }
+
+    public boolean isCartRelatedToAddToCart(String entry){
+        List<WebElement> cartProductList = findElementList(cartProducts);
+        for (WebElement cartProduct : cartProductList){
+            String text = cartProduct.getText();
+            if (!text.contains(entry)){
+                return false;
+            }
+        }
+        return true;
     }
 
     public String getFirstProductDesc(){

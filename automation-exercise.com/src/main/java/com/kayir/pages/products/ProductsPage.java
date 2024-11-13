@@ -31,7 +31,9 @@ public class ProductsPage extends HomePage {
     private By viewCart = By.xpath("//u[text()='View Cart']");
     private By brandsText = By.xpath("//h2[text()='Brands']");
     private By poloLink = By.xpath("/html/body/section[2]/div[1]/div/div[1]/div/div[2]/div/ul/li[1]/a");
-
+    private By itemList = By.className("single-products");
+    private By addToCarts = By.cssSelector(".single-products .productinfo .add-to-cart");
+    private By cartLink = By.cssSelector("ul > li:nth-child(3)");
 
     public SingleProductPage clickViewProduct() {
         scrollToElementJS(firstProduct);
@@ -39,13 +41,39 @@ public class ProductsPage extends HomePage {
         return new SingleProductPage();
     }
 
-    public BrandsProductsPage clickPolo(){
+    public CartPage clickCartLink() {
+        scrollToElementJS(cartLink);
+        click(cartLink);
+        return new CartPage();
+    }
+
+    public void clickEveryAddToCart() {
+        List<WebElement> addToCartsList = findElementList(addToCarts);
+        for (WebElement addToCart : addToCartsList) {
+            scrollToElementJS(addToCart);
+            clickJS(addToCart);
+            clickContinueButton();
+        }
+    }
+
+    public boolean isSearchRelatedToProduct(String entry) {
+        List<WebElement> searchedProducts = findElementList(itemList);
+        for (WebElement searchedProduct : searchedProducts) {
+            String text = searchedProduct.getText();
+            if (!text.contains(entry)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public BrandsProductsPage clickPolo() {
         scrollToElementJS(poloLink);
         click(poloLink);
         return new BrandsProductsPage();
     }
 
-    public boolean isBrandsTextVisible(){
+    public boolean isBrandsTextVisible() {
         scrollToElementJS(brandsText);
         return find(brandsText).isDisplayed();
     }
@@ -54,7 +82,7 @@ public class ProductsPage extends HomePage {
         moveTo(find(firstProduct2));
     }
 
-    public void moveToSecondElement(){
+    public void moveToSecondElement() {
         moveTo(find(secondProduct));
     }
 
@@ -63,19 +91,19 @@ public class ProductsPage extends HomePage {
         click(firstProductAddToCartField);
     }
 
-    public void clickSecondAddToCart(){
-        fluentWaitUntilVisible(2,secondProductAddToCartField);
+    public void clickSecondAddToCart() {
+        fluentWaitUntilVisible(2, secondProductAddToCartField);
         click(secondProductAddToCartField);
     }
 
-    public CartPage clickViewCart(){
-        explicitWaitUntilVisible(1,viewCart);
+    public CartPage clickViewCart() {
+        explicitWaitUntilVisible(1, viewCart);
         click(viewCart);
         return new CartPage();
     }
 
     public void clickContinueButton() {
-        explicitWaitUntilVisible(1, continueButton);
+        fluentWaitUntilVisible(2, continueButton);
         click(continueButton);
     }
 
