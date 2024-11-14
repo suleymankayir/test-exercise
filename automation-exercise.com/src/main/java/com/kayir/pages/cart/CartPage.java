@@ -60,7 +60,7 @@ public class CartPage extends HomePage {
 
 
     public LoginPage clickRegisterLogin(){
-        explicitWaitUntilVisible(1,registerLoginLink);
+
         click(registerLoginLink);
         return new LoginPage();
     }

@@ -15,7 +15,7 @@ public class CheckoutPage extends CartPage {
     private By placeOrderButton = By.xpath("//*[@id=\"cart_items\"]/div/div[7]/a");
     private By deliveryAddress1 = By.cssSelector("#address_delivery > li:nth-child(4)");
     private By invoiceAddress1 = By.cssSelector("#address_invoice > li:nth-child(4)");
-    private By deleteAccountLink = By.cssSelector("ul > li:nth-child(5)");
+    //private By deleteAccountLink = By.cssSelector("ul > li:nth-child(5)");
 
     public PaymentPage clickPlaceOrder() {
         scrollToElementJS(placeOrderButton);
