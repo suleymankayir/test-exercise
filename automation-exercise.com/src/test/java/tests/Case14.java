@@ -39,6 +39,14 @@ public class Case14 extends BaseTest {
         signUpPage.setAddress("1234 Avenue", "Button Apt.");
         signUpPage.setCountry("Canada", "Mumbai", "Delhi", "3456");
         signUpPage.setMobileNo("654321098");
+         /*
+                Hybrid Way
+                signUpPage.signUp(
+                "Mephisto","123456","3","October",
+                "1993","Mephisto","Allen","Wonderland Corp.",
+                "1234 Avenue","Button Apt.","Canada","Mumbai",
+                "Delhi","3456","654321098");
+        */
         var accountCreatedPage = signUpPage.clickCreateAccountButton();
         Assert.assertTrue(accountCreatedPage.isAccountCreatedTextVisible(),
                 "Account creation failed");

@@ -35,6 +35,14 @@ public class Case1 extends BaseTest {
         signUpPage.setAddress("Nowhere Avenue","Suite 3200");
         signUpPage.setCountry("Canada","Quebec","Montreal","6601");
         signUpPage.setMobileNo("+123457651221");
+        /*
+                Hybrid Way
+                signUpPage.signUp(
+                "Alice Neverland","123456","14","November",
+                "1991","Alice","Neverland","Wonderland Corp.",
+                "Nowhere Avenue","Suite 3200","Canada","Quebec",
+                "Montreal","6601","+123457651221");
+        */
 
         var accountCreatedPage = signUpPage.clickCreateAccountButton();
         Assert.assertTrue(accountCreatedPage.isAccountCreatedTextVisible());

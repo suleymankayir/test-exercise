@@ -6,11 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import static utilities.ActionsUtility.sendKeys;
-import static utilities.FileUtility.isFileDownloaded;
 import static utilities.JavaScriptUtility.scrollToElementJS;
 import static utilities.NavigateUtility.back;
 import static utilities.NavigateUtility.forward;
-import static utilities.WaitUtility.explicitWaitUntilVisible;
+
 
 public class PaymentPage extends CheckoutPage {
 
@@ -20,6 +19,14 @@ public class PaymentPage extends CheckoutPage {
     private By deleteAccountLink = By.cssSelector("ul > li:nth-child(5)");
     private By downloadInvoiceButton = By.linkText("Download Invoice");
     private By continueButton = By.xpath("//a[@data-qa='continue-button']");
+
+    public void payment(String name,String cardNo,String cvc,String expMonth,String expYear){
+        setNameOnCardField(name);
+        setCardNumber(cardNo);
+        setCVC(cvc);
+        setExpMonth(expMonth);
+        setExpYear(expYear);
+    }
 
     public DeletedAccountPage clickDeleteAccount() {
         click(deleteAccountLink);

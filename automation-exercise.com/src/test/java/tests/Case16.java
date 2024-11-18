@@ -42,6 +42,11 @@ public class Case16 extends BaseTest {
         paymentPage.setCVC("123");
         paymentPage.setExpMonth("09");
         paymentPage.setExpYear("2022");
+        /*
+            Hybrid Way
+            paymentPage.payment("Posy posy","1234567899",
+                "123","09","2022");
+         */
         paymentPage.clickPayAndConfirmOrder();
         softAssert.assertTrue(paymentPage.isSuccessMessageDisplayed(),
                 "Success message was not displayed");

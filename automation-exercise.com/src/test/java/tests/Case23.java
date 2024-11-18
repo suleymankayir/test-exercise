@@ -32,6 +32,14 @@ public class Case23 extends BaseTest {
         signupPage.setAddress(address,"New York, NY, USA");
         signupPage.setCountry("United States","New York","Manhattan","45706");
         signupPage.setMobileNo("9232345678");
+        /*
+                Hybrid Way
+                signupPage.signUp("Eric","123456","17",
+                "11","1999","Eric","Lastman",
+                "Google Inc",address,"New York, NY, USA",
+                "United States","New York","Manhattan",
+                "45706","9232345678");
+        */
         var createdAccount = signupPage.clickCreateAccountButton();
         Assert.assertTrue(createdAccount.isAccountCreatedTextVisible(),
                 "'Account created' message should be visible");

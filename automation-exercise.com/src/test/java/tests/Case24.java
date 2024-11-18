@@ -43,6 +43,14 @@ public class Case24 extends BaseTest {
         signupPage.setAddress("1600 Amphitheatre Parkway","New York, NY, USA");
         signupPage.setCountry("United States","New York","Manhattan","45706");
         signupPage.setMobileNo("9232345678");
+        /*
+                Hybrid Way
+                signupPage.signUp("Eric","123456","17",
+                "11","1999","Eric","Lastman",
+                "Google Inc","1600 Amphitheatre Parkway",
+                "New York, NY, USA","United States",
+                "New York","Manhattan","45706","9232345678");
+        */
         var createdAccount = signupPage.clickCreateAccountButton();
         Assert.assertTrue(createdAccount.isAccountCreatedTextVisible(),
                 "'Account created' message should be visible");
@@ -62,6 +70,11 @@ public class Case24 extends BaseTest {
         paymentPage.setCVC("231");
         paymentPage.setExpMonth("01");
         paymentPage.setExpYear("2022");
+        /*
+                Hybrid Way
+                paymentPage.payment("Eric Field","123142532523",
+                "231","01","2022");
+        */
         paymentPage.clickPayAndConfirmOrder();
         paymentPage.isSuccessMessageDisplayed();
         paymentPage.clickDownloadInvoice();

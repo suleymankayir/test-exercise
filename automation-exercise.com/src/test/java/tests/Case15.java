@@ -32,6 +32,14 @@ public class Case15 extends BaseTest {
         signUpPage.setAddress("1234 Avenue", "Button Apt.");
         signUpPage.setCountry("Canada", "Mumbai", "Delhi", "3456");
         signUpPage.setMobileNo("654321008");
+        /*
+                Hybrid Way
+                signUpPage.signUp(
+                "Posy","123456","3","October",
+                "1993","Mephisto","Allen","Wonderland Corp.",
+                "1234 Avenue","Button Apt.","Canada","Mumbai",
+                "Delhi","3456","654321008");
+        */
         var accountCreatedPage = signUpPage.clickCreateAccountButton();
         Assert.assertTrue(accountCreatedPage.isAccountCreatedTextVisible(),
                 "Account creation is failed");
@@ -60,6 +68,12 @@ public class Case15 extends BaseTest {
         paymentPage.setExpMonth("02");
         paymentPage.setExpYear("2020");
         paymentPage.clickPayAndConfirmOrder();
+
+        /*
+            Hybrid Way
+            paymentPage.payment("Alice","123443211233",
+                "322","02","2020");
+         */
         softAssert.assertTrue(paymentPage.isSuccessMessageDisplayed(),
                 "Order Process Could Not Be Completed");
         var deletedAccountPage = paymentPage.clickDeleteAccount();
